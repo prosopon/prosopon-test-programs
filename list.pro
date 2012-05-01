@@ -26,31 +26,6 @@ let Last <
 >
 
 
-let Sum <
-    case null \cust: send cust (0) ;
-    case \list \cust: send SumImpl{0} (list cust) ;
->
-
-let SumImpl{sum}<
-    case null \cust: send cust (sum) ;
-    case \list \cust:
-        send list ("car"  <
-            case \val:
-                send val ("+" sum <
-                    case \val:
-                        send list ("cdr" <
-                            case \cdr:
-                                send SumImpl{val} (cdr cust)
-                            ;
-                        >)
-                    ;
-                >)
-            ;
-        >)
-    ;
->
-
-
 let ForEach <
     case null \cust: ;
     case \list \cust:
@@ -71,10 +46,8 @@ let Square <
 
 let a Cons{1 Cons{2 Cons{3 Cons{4 null}}}}
 
-//send First (a stdout)
-//send Last (a stdout)
-
 
 send Square (a stdout)
 
-//send Sum (a stdout)
+//send First (a stdout)
+//send Last (a stdout)
